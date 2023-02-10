@@ -1,0 +1,35 @@
+function imgTest
+ clc;
+dbpath = 'E:\Education\MATLAB\myRecord.mdb';
+conurl = ['jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)}; DBQ=' dbpath];
+con = database('','','','sun.jdbc.odbc.JdbcOdbcDriver', conurl);
+% [name ImagePath] = uigetfile( {'*.*'}, 'Select an image'  );
+% 
+%  ImageName = strcat(ImagePath, name);  % set image path
+%  
+%  img = imread(ImageName);
+% img = imresize(img, [200 200] );
+% 
+%pathFinPrint='E:\Education\MATLAB\fingerPrint\';
+% pathProPic='E:\Education\MATLAB\profilePic\';
+%  imshow(img);
+% 
+%  pathFinPrint = strcat(pathFinPrint,name);
+% imwrite(img, pathFinPrint);
+% colnames = {'NIC','Name','Father_Name','Address','Email','Contact','Finger_Print','Profile_Pic'};
+% data = {'111','ali babar','babar ismail','professors colony, uni road','abc@gmail.com','0333123456',name,name};
+% tablename = 'myTable';
+% insert(con,tablename,colnames,data);
+curs = exec(con,'select NIC from myTable ');
+
+curs = fetch(curs);
+
+curs.Data 
+numel(curs.Data)
+% pathFinPrint=strcat(pathFinPrint, char(curs.Data));
+% a=imread(pathFinPrint);
+% imshow(a);
+
+
+
+end

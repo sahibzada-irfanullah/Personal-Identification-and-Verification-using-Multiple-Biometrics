@@ -1,0 +1,184 @@
+function varargout = testGUI(varargin)
+% TESTGUI MATLAB code for testGUI.fig
+%      TESTGUI, by itself, creates a new TESTGUI or raises the existing
+%      singleton*.
+%
+%      H = TESTGUI returns the handle to a new TESTGUI or the handle to
+%      the existing singleton*.
+%
+%      TESTGUI('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in TESTGUI.M with the given input arguments.
+%
+%      TESTGUI('Property','Value',...) creates a new TESTGUI or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before testGUI_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to testGUI_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help testGUI
+
+% Last Modified by GUIDE v2.5 26-Dec-2014 17:30:29
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @testGUI_OpeningFcn, ...
+                   'gui_OutputFcn',  @testGUI_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before testGUI is made visible.
+function testGUI_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to testGUI (see VARARGIN)
+
+% Choose default command line output for testGUI
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes testGUI wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+%set(handles.axes1,'xtick',[],'ytick',[])
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = testGUI_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+% clc;
+% Name = get(handles.ttt,'string');
+% get(handles.ttt,'Marwat');
+% disp(Name);
+
+
+
+function ttt_Callback(hObject, eventdata, handles)
+% hObject    handle to ttt (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+%get(handles.ttt,'String');
+% disp(get(handles.ttt,'String'));
+% user_entry_X = str2double(get(hObject,'string'));
+% if isnan(user_entry_X)
+%  errordlg('You must enter a character values','Bad Input','modal')
+%  uicontrol(hObject)
+% return
+% end
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% Hints: get(hObject,'String') returns contents of ttt as text
+%        str2double(get(hObject,'String')) returns contents of ttt as a double
+try
+[name Path] = uigetfile( {'*.*'}, 'Select a Finger Print to Identify and varify'  );
+ImagePath = strcat(Path, name);
+catch
+errordlg('Please enter Only characters!!!','Bad Input for Name','modal')    
+end
+% --- Executes during object creation, after setting all properties.
+function ttt_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to ttt (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+    
+end
+
+
+% --- Executes on key press with focus on figure1 and none of its controls.
+function figure1_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  structure with the following fields (see FIGURE)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+% disp('key is pressed');
+%disp('keypress');
+
+% --- Executes on key press with focus on figure1 or any of its controls.
+function figure1_WindowKeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  structure with the following fields (see FIGURE)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+% keypress=get(handles.testGUI,'CurrentCharacter');
+% switch keypress
+% case 'a'
+% disp('a is pressed');
+% case 'b'
+% disp('b is pressed');
+% end
+% disp('widowkeypress');
+% global flag
+% if strcmp(flag,'ttt')
+%     
+% end
+
+% keycode=double(get(handles.figure1,'CurrentCharacter'));
+% if keycode>=97 && keycode<=122
+% elseif keycode>=65 && keycode<=90
+% elseif keycode==8
+% else
+%    errordlg('Please enter Only characters!!!','Bad Input for Name','modal')
+%      uicontrol(handles.txtName)
+%      nameflag=0;
+% end
+% --- Executes on key press with focus on ttt and none of its controls.
+function ttt_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to ttt (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: characteinterpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+% disp('ttt_KeyPressFcn');
+% global flag
+% flag='ttt'
+disp('only 9 numbers');
+function prefix_edit_KeyPressFcn(hObject, eventdata, handles)
+%     text = get(hObject, 'String');
+%     if length(text) ~= 9
+% %         set(hObject, 'String', text(1:15));
+ disp('only 9 numbers');
+
+
+
+%     end

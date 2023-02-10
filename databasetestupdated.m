@@ -1,0 +1,84 @@
+function databasetestupdated
+%db=insertdb(name)
+clc;
+dbpath = 'E:\Education\MATLAB\myRecord.mdb';
+conurl = ['jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)}; DBQ=' dbpath];
+con = database('','','','sun.jdbc.odbc.JdbcOdbcDriver', conurl);
+
+
+% select and display
+%===========================================================
+
+% curs = exec(con,'select * from myTable');
+% curs = fetch(curs);
+% 
+% curs.Data 
+% close(curs)
+% close(con)
+% clear all;
+%============================================================
+
+%+++++++++++++++++++++
+
+% insert new record
+%============================================================
+% i{1}=imread('1.tif');
+% imshow(i{1});
+% curs = exec(con,'select * from myTable');
+% curs = fetch(curs);
+% curs.Data 
+% colnames = {'NIC','Name','Father_Name','Address','Email','Contact','Finger_Print','Profile_Pic'};
+% data = {'101','ali babar','babar ismail','professors colony, uni road','abc@gmail.com','0333123456','myprint','mypic'};
+% tablename = 'myTable';
+% insert(con,tablename,colnames,data);
+% curs = exec(con,'select * from myTable');
+% curs = fetch(curs);
+% curs.Data
+%===========================================================
+
+%++++++++++++++++++++
+
+% updates existing record
+%===========================================================
+
+% exec(con,'update myTable set Name=''shehzada saleem'' where NIC = ''101''');
+%  curs = exec(con,'select * from myTable');
+%  curs = fetch(curs);
+%  curs.Data
+
+%=====
+% OR (both ways are tested n works fine)
+%=====
+
+% curs = exec(con,'select * from myTable');
+% curs = fetch(curs);
+% curs.Data
+% colnames = {'Name','Father_Name','Address','Email','Contact','Finger_Print','Profile_Pic'};
+% data = {'ali babar','babar ismail','hostel, hostel','abc@hostel.com','hotel','myprint','mypic'};
+% tablename = 'myTable';
+% whereclause = 'where NIC = ''101''';
+% 
+%  update(con,tablename,colnames,data,whereclause);
+% 
+% curs = exec(con,'select * from myTable');
+% curs = fetch(curs);
+% curs.Data
+
+
+%=========================================================
+
+
+%++++++++++++++++
+
+%delete a record
+%========================================================
+exec(con,'delete from myTable where NIC = ''101''');
+% 
+%  curs = exec(con,'select * from myTable');
+%  curs = fetch(curs);
+%  curs.Data
+%========================================================
+
+
+end
+

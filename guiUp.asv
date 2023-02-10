@@ -1,0 +1,529 @@
+function varargout = guiUp(varargin)
+% GUIUP MATLAB code for guiUp.fig
+%      GUIUP, by itself, creates a new GUIUP or raises the existing
+%      singleton*.
+%
+%      H = GUIUP returns the handle to a new GUIUP or the handle to
+%      the existing singleton*.
+%
+%      GUIUP('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in GUIUP.M with the given input arguments.
+%
+%      GUIUP('Property','Value',...) creates a new GUIUP or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before guiUp_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to guiUp_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help guiUp
+
+% Last Modified by GUIDE v2.5 26-Dec-2014 19:38:07
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @guiUp_OpeningFcn, ...
+                   'gui_OutputFcn',  @guiUp_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before guiUp is made visible.
+function guiUp_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to guiUp (see VARARGIN)
+set(handles.axesUpdProPic,'xtick',[],'ytick',[]);
+set(handles.axesUpdThumPic,'xtick',[],'ytick',[]);
+% Choose default command line output for guiUp
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+% UIWAIT makes guiUp wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+clc;
+global cursSearch
+global thumbPicGUp
+global propic
+ pthumb='NO';
+ propic='NO';
+data=cursSearch.Data;
+set(handles.txtCNIC,'Enable','off')
+
+set(handles.txtCNIC,'String',data{1});
+set(handles.txtName,'String',data{2});
+set(handles.txtFName,'String',data{3});
+set(handles.txtAddress,'String',data{4});
+set(handles.txtEmail,'String',data{5});
+set(handles.txtContact,'String',data{6});
+axes(handles.axesUpdProPic);
+imshow(data{7})
+axes(handles.axesUpdThumPic);
+imshow(data{8})
+
+
+
+
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = guiUp_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+
+function txtName_Callback(hObject, eventdata, handles)
+% hObject    handle to txtName (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtName as text
+%        str2double(get(hObject,'String')) returns contents of txtName as a double
+name = (get(hObject, 'String'));
+n = name;
+
+n = str2double(n);
+if ~isnan(n)
+    errordlg('You must enter a String!!!','Bad Input for Father Name','modal')
+ 
+ uicontrol(hObject)
+
+return
+end
+
+% --- Executes during object creation, after setting all properties.
+function txtName_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtName (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function txtFName_Callback(hObject, eventdata, handles)
+% hObject    handle to txtFName (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtFName as text
+%        str2double(get(hObject,'String')) returns contents of txtFName as a double
+name = (get(hObject, 'String'));
+n = name;
+
+n = str2double(n);
+if ~isnan(n)
+    errordlg('You must enter a String!!!','Bad Input for Father Name','modal')
+ 
+ uicontrol(hObject)
+
+return
+end
+
+% --- Executes during object creation, after setting all properties.
+function txtFName_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtFName (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function txtCNIC_Callback(hObject, eventdata, handles)
+% hObject    handle to txtCNIC (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtCNIC as text
+%        str2double(get(hObject,'String')) returns contents of txtCNIC as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function txtCNIC_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtCNIC (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function txtAddress_Callback(hObject, eventdata, handles)
+% hObject    handle to txtAddress (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtAddress as text
+%        str2double(get(hObject,'String')) returns contents of txtAddress as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function txtAddress_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtAddress (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function txtContact_Callback(hObject, eventdata, handles)
+% hObject    handle to txtContact (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtContact as text
+%        str2double(get(hObject,'String')) returns contents of txtContact as a double
+user_entry_X = str2double(get(hObject,'string'));
+if isnan(user_entry_X)
+ errordlg('You must enter a numeric value','Bad Input for Contact','modal')
+ 
+ uicontrol(hObject)
+
+return
+end
+
+% --- Executes during object creation, after setting all properties.
+function txtContact_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtContact (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function txtEmail_Callback(hObject, eventdata, handles)
+% hObject    handle to txtEmail (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txtEmail as text
+%        str2double(get(hObject,'String')) returns contents of txtEmail as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function txtEmail_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txtEmail (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in btnUpd.
+function btnUpd_Callback(hObject, eventdata, handles)
+% hObject    handle to btnUpd (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global thumbPicGUp
+ global proPicGUp
+global pthumb
+global propic
+ if isempty(get(handles.txtName,'String'));
+   errordlg('Please enter Name!!!','Bad Input for Name','modal')
+     uicontrol(handles.txtName)
+   return;
+ elseif isempty(get(handles.txtCNIC,'String'));
+   errordlg('Please enter CNIC!!!','Bad Input for CNIC','modal')
+     uicontrol(handles.txtCNIC)
+   return;
+   elseif isempty(get(handles.txtFName,'String'));
+   errordlg('Please enter Father Name!!!','Bad Input for Father Name','modal')
+     uicontrol(handles.txtFName)
+   return;
+   elseif isempty(get(handles.txtAddress,'String'));
+   errordlg('Please enter Address!!!','Bad Input for Address','modal')
+     uicontrol(handles.txtAddress)
+   return;
+   elseif isempty(get(handles.txtContact,'String'));
+   errordlg('Please enter Contact#!!!','Bad Input for Contact#','modal')
+     uicontrol(handles.txtContact)
+   return;
+   elseif isempty(get(handles.txtEmail,'String'));
+   errordlg('Please enter Email!!!','Bad Input for Email','modal')
+     uicontrol(handles.txtEmail)
+   return;
+ end
+ result=questdlg('Do you really want to save chanages?"','Update Record');
+ switch result
+ case 'Yes'
+
+dbpath = 'E:\Education\MATLAB\myRecord.mdb';
+conurl = ['jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)}; DBQ=' dbpath];
+con = database('','','','sun.jdbc.odbc.JdbcOdbcDriver', conurl);
+
+tNIC = get(handles.txtCNIC,'String');
+tName = get(handles.txtName,'String');
+tFName = get(handles.txtFName,'String');
+tEmail = get(handles.txtEmail,'String');
+tContact = get(handles.txtContact,'String');
+tAddress = get(handles.txtAddress,'String');
+% addFingPrint='E:\Education\MATLAB\fingerPrint\';
+% addProPic='E:\Education\MATLAB\profilePic\';
+% addFingPrint = strcat(addFingPrint,tNIC,'.tif');
+% addProPic = strcat(addProPic,tNIC,'.tif');
+% addFingPrint
+% addProPic
+% imwrite(thumbPicGUp,addFingPrint,'tif');
+% imwrite(proPicGUp,addProPic,'tif');
+ colnames = {'Name','Father_Name','Address','Email','Contact'};%,'Finger_Print','Profile_Pic'};
+ data = {tName,tFName,tEmail,tEmail,tContact};%,addFingPrint,addProPic};
+ tablename = 'myTable';
+
+whereclause = [' where NIC = ' '''' tNIC ''''];
+update(con,tablename,colnames,data,whereclause);
+ get(con,'AutoCommit');
+
+ close(con);
+ if ~strcmp(pthumb,'NO')
+ colnames = {'Name','Father_Name','Address','Email','Contact'};%,'Finger_Print','Profile_Pic'};
+ data = {tName,tFName,tEmail,tEmail,tContact};%,addFingPrint,addProPic};
+ tablename = 'myTable';
+
+whereclause = [' where NIC = ' '''' tNIC ''''];
+update(con,tablename,colnames,data,whereclause);
+close(con);
+ end
+ if ~strcmp(thumbPicGUp,'NO')
+    addFingPrint='E:\Education\MATLAB\fingerPrint\';
+% addProPic='E:\Education\MATLAB\profilePic\';
+ addFingPrint = strcat(addFingPrint,tNIC,'.tif');
+% addProPic = strcat(addProPic,tNIC,'.tif');
+% addFingPrint
+% addProPic
+imwrite(thumbPicGUp,addFingPrint,'tif');
+% imwrite(proPicGUp,addProPic,'tif');
+ colnames = {'Finger_Print'};%,'Finger_Print','Profile_Pic'};
+ data = {propic};%,addFingPrint,addProPic};
+ tablename = 'myTable';
+
+whereclause = [' where NIC = ' '''' tNIC ''''];
+update(con,tablename,colnames,data,whereclause);
+close(con);
+ end
+guiUpdRec();
+close('guiUp');
+case 'No'
+    guiOpsOpt();
+   close('guiUp'); 
+case 'Cancel'
+        
+end
+
+% --- Executes on button press in btnDel.
+function btnDel_Callback(hObject, eventdata, handles)
+% hObject    handle to btnDel (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+result=questdlg('Do you really want to delete the record?"','Delete Record','Delete','Cancel','Delete');
+
+switch result
+    case 'Delete'
+dbpath = 'E:\Education\MATLAB\myRecord.mdb';
+conurl = ['jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)}; DBQ=' dbpath];
+con = database('','','','sun.jdbc.odbc.JdbcOdbcDriver', conurl);
+tNIC = get(handles.txtCNIC,'String');
+exec(con,['delete from myTable where NIC = ' '''' tNIC '''']);
+
+get(con,'AutoCommit')
+close(con);
+close('guiUp');
+ guiDelRec();
+
+
+case 'Cancel'
+
+
+end
+
+% --- Executes on button press in btnUpdThumPic.
+function btnUpdThumPic_Callback(hObject, eventdata, handles)
+% hObject    handle to btnUpdThumPic (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global thumbPicGUp;
+[name Path] = uigetfile( {'*.*'}, 'Select an image'  );
+ thumbPicAdd= strcat(Path, name);  % set image path
+thumbPicGUp = imread(thumbPicAdd);
+axes(handles.axesUpdThumPic);
+imshow(thumbPicGUp)
+
+
+
+
+% --- Executes on button press in btnUpdProPic.
+function btnUpdProPic_Callback(hObject, eventdata, handles)
+% hObject    handle to btnUpdProPic (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+global proPicGUp;
+
+[name Path] = uigetfile( {'*.*'}, 'Select an image'  );
+ proPicGUp= strcat(Path, name);  % set image path
+proPicGUp = imread(proPicGUp);
+axes(handles.axesUpdProPic);
+imshow(proPicGUp)
+
+
+
+% --- Executes on button press in btnCancel.
+function btnCancel_Callback(hObject, eventdata, handles)
+% hObject    handle to btnCancel (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+close(guiUp);
+guiMain();
+
+% --- Executes on button press in btnBackGSearch.
+function btnBackGSearch_Callback(hObject, eventdata, handles)
+% hObject    handle to btnBackGSearch (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+close(guiUp);
+guiSearch();
+
+
+% --- Executes on key press with focus on txtName and none of its controls.
+function txtName_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to txtName (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+keycode=double(get(handles.figure1,'CurrentCharacter'));
+if keycode>=97 && keycode<=122
+elseif keycode>=65 && keycode<=90  
+elseif keycode==28
+elseif keycode==29
+    elseif keycode==8
+         elseif keycode==127
+            elseif keycode==32
+else
+      errordlg('Please enter Only characters!!!','Bad Input for Name','modal')
+     uicontrol(handles.txtName)
+     
+end
+
+
+% --- Executes on key press with focus on txtFName and none of its controls.
+function txtFName_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to txtFName (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+keycode=double(get(handles.figure1,'CurrentCharacter'));
+if keycode>=97 && keycode<=122
+elseif keycode>=65 && keycode<=90  
+elseif keycode==28
+elseif keycode==29
+    elseif keycode==8
+         elseif keycode==127
+            elseif keycode==32
+else
+      errordlg('Please enter Only characters!!!','Bad Input for Father Name','modal')
+     uicontrol(handles.txtFName)
+     
+end
+
+
+% --- Executes on key press with focus on txtCNIC and none of its controls.
+function txtCNIC_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to txtCNIC (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+keycode=double(get(handles.figure1,'CurrentCharacter'));
+if keycode>=48 && keycode<=57
+elseif keycode==8
+    elseif keycode==28
+elseif keycode==29
+     elseif keycode==127
+            elseif keycode==32
+else
+   errordlg('Please enter Only numbers!!!','Bad Input for CNIC','modal')
+     uicontrol(handles.txtCNIC)
+     
+end
+
+
+% --- Executes on key press with focus on txtContact and none of its controls.
+function txtContact_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to txtContact (see GCBO)
+% eventdata  structure with the following fields (see UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+keycode=double(get(handles.figure1,'CurrentCharacter'));
+if keycode>=48 && keycode<=57
+elseif keycode==8
+    elseif keycode==28
+elseif keycode==29
+     elseif keycode==127
+            elseif keycode==32
+else
+   errordlg('Please enter Only numbers!!!','Bad Input for Contact','modal')
+     uicontrol(handles.txtContact)
+     
+end

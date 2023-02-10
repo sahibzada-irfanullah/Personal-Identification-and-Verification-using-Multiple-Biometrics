@@ -1,0 +1,86 @@
+function databasetest
+% %UNTITLED2 Summary of this function goes here
+% %   Detailed explanation goes here
+% clc;
+% % clear all;
+% %  n='irfan';
+% % a{1}='7';
+% %curs = exec(conn,['delete * from muTable where productNumber = ' 5)]);
+% 
+% %setdbprefs('DataReturnFormat','cellarray')
+% conn = database.ODBCConnection('dbtoolbox','admin','admin');
+% %conn1 = database.ODBCConnection('dbtoolbox','admin','admin');
+% % sqlquery = ['select * from productTable'...
+% % 'where productDescription = ' '''' productdesc '''']; 
+% %sqlquery = ['select Name,Father_Name,NIC from myTable where Name = ' '''irfan'''];
+% % sqlquery = ['select Name,Father_Name,NIC from myTable where Name = ' '''' n '''']; 
+% % sqlquery = ['select Name from myTable where Name = ' '''' n ''''];
+% % colnames = {'NIC','Name','Father_Name','Address','Email','Contact','Finger_Print','Profile_Pic'};
+% % data = {a{1} 'cccc' 'cccc' 'cccc' 'cccc' 'cccc' 'cccc' 'cccc'};
+% % insert(conn,'myTable',colnames,data)
+%  %sqlquery = ['delete * from myTable where Name = ' '''akram'''];
+%  %sqlquery = ['delete * from myTable where Name = ' '''' n ''''];
+% % get(conn,'AutoCommit')
+% %  
+% % conn
+% % 
+% %***************************************
+% ping(conn)
+%  %sqlquery = ['select NIC,Name,Father_Name,Address,Email,Contact,Finger_Print,Profile_Pic from myTable where Name = ' '''' n '''']; 
+%  sqlquery = 'select Name from myTable'; 
+%  curs = exec(conn,sqlquery);
+% curs = fetch(curs);
+% curs.Data;
+% 
+% 
+% % close(curs)
+% % sqlquery1 = ['select Address,Email,Contact from myTable where Name = ' '''' n ''''];
+% % curs1 = exec(conn1,sqlquery1);
+% % curs1 = fetch(curs1);
+% % a1=curs1.Data;
+% % a1
+% % close(curs1)
+% %************************************
+% 
+% % 
+% % colnames = {'Name'};
+% % data = {'shafqat'};
+% % tablename = 'myTable';
+% % whereclause = 'where Name = ''irfan''';
+% % % 
+% %  update(conn,tablename,colnames,data,whereclause) 
+% %  sqlquery = ['select Name,Father_Name from myTable'];
+% %  curs = exec(conn,sqlquery);
+% % curs = fetch(curs);
+% % curs.Data
+% % data = {'10','iiii','iiii','iiiia','iii','ii','iizz','zzzz'};%,'zzzz','zaaaa','zzzzz'};%,'zzzz','zaaaa','zzzzz','zzzzz'};
+% % colnames = {'NIC','Name','Father_Name','Address','Email','Contact','Finger_Print','Profile_Pic'};%,'Name','Father_Name','Address'};%,'Email','Contact','Finger_Print','Profile_Pic'};
+% % insert(conn,'myTable',colnames,data)
+% % sqlquery = 'commit';
+% % exec(conn,sqlquery)
+% 
+% %  data= {'shafqat'};
+% %  colnames = {'Name'};
+% %  tablename = 'myTable';
+% % whereclause = 'where NIC=2';
+% % 
+% % update(conn,tablename,colnames,data,whereclause)
+% %update(conn,'myTable','Name',n,'where NIC= ''5''')
+% 
+% % sqlquery = ['select Name,Father_Name from myTable'];
+% %  curs = exec(conn,sqlquery);
+% % curs = fetch(curs);
+% % curs.Data
+% % colnames = {'NIC','Name','Father_Name','Address','Email','Contatct',};
+% %close(curs)
+% %**********************************
+% % dbpath = 'E:\Education\MATLAB\myRecord.mdb';
+% % conurl = ['jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)}; DBQ=' dbpath];
+% % con = database('','','','sun.jdbc.odbc.JdbcOdbcDriver', conurl);
+% % query = 'select * from myTable';
+% % curs = exec(con, query);
+% % curs=fetch(curs);
+% % curs.Data
+% %************************
+close(conn)
+end
